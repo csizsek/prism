@@ -1,3 +1,3 @@
 package entity
 
-type Entity interface {}
+type Entity interface{}

@@ -3,13 +3,13 @@ package decoder
 import "github.com/csizsek/prism/entity"
 
 type FooDecoder struct {
-	input chan entity.FooEntity
+	input  chan entity.FooEntity
 	output chan entity.CommonEntity
 }
 
 func (this *FooDecoder) Decode() {
 	for {
-		fooEntity := <- this.input
+		fooEntity := <-this.input
 		this.output <- *entity.NewCommonEntity(fooEntity.Data, "")
 	}
 }

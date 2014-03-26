@@ -9,7 +9,7 @@ type BarSender struct {
 
 func (this *BarSender) Send() {
 	for {
-		barEntity := <- this.input
+		barEntity := <-this.input
 		fmt.Println(barEntity.Msg)
 	}
 }

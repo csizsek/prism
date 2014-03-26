@@ -13,7 +13,7 @@ func (this *FooReceiver) Receive() {
 	http.ListenAndServe(":8000", nil)
 }
 
-func (this *FooReceiver) handler(rw http.ResponseWriter,req *http.Request) {
+func (this *FooReceiver) handler(rw http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(rw, "data received")
 	this.output <- *entity.NewFooEntity("hello")
 }

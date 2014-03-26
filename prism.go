@@ -24,6 +24,6 @@ func main() {
 	go encoder.Encode()
 	go sender.Send()
 
-	quitMsg := <- quit
+	quitMsg := <-quit
 	fmt.Println(quitMsg)
 }

@@ -2,7 +2,7 @@ package entity
 
 type CommonEntity struct {
 	FooData string
-	BarMsg string
+	BarMsg  string
 }
 
 func NewCommonEntity(fooData string, barMsg string) *CommonEntity {

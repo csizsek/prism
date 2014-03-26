@@ -3,13 +3,13 @@ package encoder
 import "github.com/csizsek/prism/entity"
 
 type BarEncoder struct {
-	input chan entity.CommonEntity 
+	input  chan entity.CommonEntity
 	output chan entity.BarEntity
 }
 
 func (this *BarEncoder) Encode() {
 	for {
-		commonEntity := <- this.input
+		commonEntity := <-this.input
 		this.output <- *entity.NewBarEntity(commonEntity.FooData)
 	}
 }
