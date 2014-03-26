@@ -1,23 +1,24 @@
 package receiver
 
+import "fmt"
+import "net/http"
+import "github.com/csizsek/prism/entity"
+
 type FooReceiver struct {
-	output chan FooEntity
+	output chan entity.FooEntity
 }
 
-func (this *FooReceiver) receive() {
-	fmt.Println("FooReceiver.receive")
+func (this *FooReceiver) Receive() {
 	http.HandleFunc("/", this.handler)
 	http.ListenAndServe(":8000", nil)
 }
 
 func (this *FooReceiver) handler(rw http.ResponseWriter,req *http.Request) {
-	fmt.Println("FooReceiver.handler")
-	fmt.Fprintf(rw, "ACK")
-	this.output <- *NewFooEntity("hello")
+	fmt.Fprintf(rw, "data received")
+	this.output <- *entity.NewFooEntity("hello")
 }
 
-func NewFooReceiver(output chan FooEntity) *FooReceiver {
-	fmt.Println("NewFooReceiver")
+func NewFooReceiver(output chan entity.FooEntity) *FooReceiver {
 	receiver := new(FooReceiver)
 	receiver.output = output
 	return receiver

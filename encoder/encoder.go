@@ -1,5 +1,7 @@
 package encoder
 
+import "github.com/csizsek/prism/entity"
+
 type Encoder interface {
-	encode(CommonEntity) Entity
+	Encode(entity.CommonEntity) entity.Entity
 }

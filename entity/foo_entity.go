@@ -1,12 +1,11 @@
 package entity
 
 type FooEntity struct {
-	data string
+	Data string
 }
 
 func NewFooEntity(data string) *FooEntity {
-	fmt.Println("NewFooEntity")
-	e := new(FooEntity)
-	e.data = data
-	return e
+	entity := new(FooEntity)
+	entity.Data = data
+	return entity
 }

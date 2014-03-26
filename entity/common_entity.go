@@ -1,14 +1,13 @@
 package entity
 
 type CommonEntity struct {
-	foo_data string
-	bar_msg string
+	FooData string
+	BarMsg string
 }
 
-func NewCommonEntity(foo_data string, bar_msg string) *CommonEntity {
-	fmt.Println("NewCommonEntity")
-	e := new(CommonEntity)
-	e.foo_data = foo_data
-	e.bar_msg = bar_msg
-	return e
+func NewCommonEntity(fooData string, barMsg string) *CommonEntity {
+	entity := new(CommonEntity)
+	entity.FooData = fooData
+	entity.BarMsg = barMsg
+	return entity
 }

@@ -1,12 +1,11 @@
 package entity
 
 type BarEntity struct {
-	msg string
+	Msg string
 }
 
 func NewBarEntity(msg string) *BarEntity {
-	fmt.Println("NewBarEntity")
-	e := new(BarEntity)
-	e.msg = msg
-	return e
+	entity := new(BarEntity)
+	entity.Msg = msg
+	return entity
 }

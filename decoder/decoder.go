@@ -1,5 +1,7 @@
 package decoder
 
+import "github.com/csizsek/prism/entity"
+
 type Decoder interface {
-	decode(Entity) CommonEntity
+	Decode(entity.Entity) entity.CommonEntity
 }

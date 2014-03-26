@@ -1,20 +1,20 @@
 package sender
 
+import "fmt"
+import "github.com/csizsek/prism/entity"
+
 type BarSender struct {
-	input chan BarEntity
+	input chan entity.BarEntity
 }
 
-func (this *BarSender) send() {
-	fmt.Println("BarSender.send")
-	var e BarEntity
+func (this *BarSender) Send() {
 	for {
-		e = <- this.input
-		fmt.Println(e.msg)
+		barEntity := <- this.input
+		fmt.Println(barEntity.Msg)
 	}
 }
 
-func NewBarSender(input chan BarEntity) *BarSender {
-	fmt.Println("NewBarSender")
+func NewBarSender(input chan entity.BarEntity) *BarSender {
 	sender := new(BarSender)
 	sender.input = input
 	return sender

@@ -1,20 +1,20 @@
 package encoder
 
+import "github.com/csizsek/prism/entity"
+
 type BarEncoder struct {
-	input chan CommonEntity 
-	output chan BarEntity
+	input chan entity.CommonEntity 
+	output chan entity.BarEntity
 }
 
-func (this *BarEncoder) encode() {
-	fmt.Println("BarEncoder.encode")
+func (this *BarEncoder) Encode() {
 	for {
 		commonEntity := <- this.input
-		this.output <- *NewBarEntity(commonEntity.foo_data)
+		this.output <- *entity.NewBarEntity(commonEntity.FooData)
 	}
 }
 
-func NewBarEncoder(input chan CommonEntity, output chan BarEntity) *BarEncoder {
-	fmt.Println("NewBarEncoder")
+func NewBarEncoder(input chan entity.CommonEntity, output chan entity.BarEntity) *BarEncoder {
 	encoder := new(BarEncoder)
 	encoder.input = input
 	encoder.output = output

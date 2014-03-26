@@ -1,8 +1,12 @@
 package main
 
 import "fmt"
-import "net/http"
-import "./entity"
+
+import "github.com/csizsek/prism/entity"
+import "github.com/csizsek/prism/receiver"
+import "github.com/csizsek/prism/decoder"
+import "github.com/csizsek/prism/encoder"
+import "github.com/csizsek/prism/sender"
 
 func main() {
 	input := make(chan entity.FooEntity)
@@ -10,15 +14,15 @@ func main() {
 	output := make(chan entity.BarEntity)
 	quit := make(chan string)
 
-	receiver := NewFooReceiver(input)
-	decoder := NewFooDecoder(input, middle)
-	encoder := NewBarEncoder(middle, output)
-	sender := NewBarSender(output)
+	receiver := receiver.NewFooReceiver(input)
+	decoder := decoder.NewFooDecoder(input, middle)
+	encoder := encoder.NewBarEncoder(middle, output)
+	sender := sender.NewBarSender(output)
 
-	go receiver.receive()
-	go decoder.decode()
-	go encoder.encode()
-	go sender.send()
+	go receiver.Receive()
+	go decoder.Decode()
+	go encoder.Encode()
+	go sender.Send()
 
 	quitMsg := <- quit
 	fmt.Println(quitMsg)

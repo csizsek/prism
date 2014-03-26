@@ -1,5 +1,7 @@
 package sender
 
+import "github.com/csizsek/prism/entity"
+
 type Sender interface {
-	send(Entity)
+	Send(entity.Entity)
 }

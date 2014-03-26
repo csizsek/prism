@@ -1,20 +1,20 @@
 package decoder
 
+import "github.com/csizsek/prism/entity"
+
 type FooDecoder struct {
-	input chan FooEntity
-	output chan CommonEntity
+	input chan entity.FooEntity
+	output chan entity.CommonEntity
 }
 
-func (this *FooDecoder) decode() {
-	fmt.Println("FooDecoder.decode")
+func (this *FooDecoder) Decode() {
 	for {
 		fooEntity := <- this.input
-		this.output <- *NewCommonEntity(fooEntity.data, "")
+		this.output <- *entity.NewCommonEntity(fooEntity.Data, "")
 	}
 }
 
-func NewFooDecoder(input chan FooEntity, output chan CommonEntity) *FooDecoder {
-	fmt.Println("NewFooDecoder")
+func NewFooDecoder(input chan entity.FooEntity, output chan entity.CommonEntity) *FooDecoder {
 	decoder := new(FooDecoder)
 	decoder.input = input
 	decoder.output = output
