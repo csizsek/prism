@@ -1,6 +1,5 @@
 package receiver
 
-import "fmt"
 import "net"
 import "net/rpc"
 import "github.com/csizsek/prism/entity"
@@ -41,6 +40,5 @@ func (this *ScribeReceiver) parseMessage(msg *scribe.LogEntry) *entity.ScribeEnt
 	scribeEntity := entity.NewScribeEntity()
 	scribeEntity.Category = msg.Category
 	scribeEntity.Message = msg.Message
-	fmt.Println(scribeEntity.Category, scribeEntity.Message)
 	return scribeEntity
 }
