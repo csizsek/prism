@@ -9,14 +9,14 @@ import "github.com/csizsek/prism/encoder"
 import "github.com/csizsek/prism/sender"
 
 func main() {
-	rec2dec := make(chan entity.ScribeEntity)
-	dec2disp := make(chan entity.CommonEntity)
-	disp2map := make(chan entity.CommonEntity)
-	map2enc:= make(chan entity.CommonEntity)
-	enc2send := make(chan entity.BarEntity)
-	
-	quit := make(chan string)
-	endpoints := []chan entity.CommonEntity{disp2map}
+	rec2dec := make(chan *entity.ScribeEntity)
+	dec2disp := make(chan *entity.CommonEntity)
+	disp2map := make(chan *entity.CommonEntity)
+	map2enc := make(chan *entity.CommonEntity)
+	enc2send := make(chan *entity.BarEntity)
+
+	quit := make(chan int)
+	endpoints := []chan *entity.CommonEntity{disp2map}
 
 	receiver := receiver.NewScribeReceiver(rec2dec)
 	decoder := decoder.NewScribeDecoder(rec2dec, dec2disp)

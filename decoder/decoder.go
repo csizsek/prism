@@ -18,5 +18,5 @@ interface should be implemented for each protocol that is used to
 feed data into Prism.
 */
 type Decoder interface {
-	Decode(entity.Entity) entity.CommonEntity
+	Decode(*entity.Entity) *entity.CommonEntity
 }

@@ -4,7 +4,7 @@ import "fmt"
 import "github.com/csizsek/prism/entity"
 
 type BarSender struct {
-	input chan entity.BarEntity
+	input chan *entity.BarEntity
 }
 
 func (this *BarSender) Send() {
@@ -14,7 +14,7 @@ func (this *BarSender) Send() {
 	}
 }
 
-func NewBarSender(input chan entity.BarEntity) *BarSender {
+func NewBarSender(input chan *entity.BarEntity) *BarSender {
 	sender := new(BarSender)
 	sender.input = input
 	return sender
