@@ -10,7 +10,9 @@ type BarEncoder struct {
 func (this *BarEncoder) Encode() {
 	for {
 		commonEntity := <-this.input
-		this.output <- entity.NewBarEntity(commonEntity.ScribeCategory + " " + commonEntity.ScribeMessage)
+		barEntity := entity.NewBarEntity()
+		barEntity.Msg = commonEntity.BarEntity.Msg
+		this.output <- barEntity
 	}
 }
 

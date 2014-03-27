@@ -1,10 +1,9 @@
 package entity
 
 type CommonEntity struct {
-	FooData        string
-	BarMsg         string
-	ScribeCategory string
-	ScribeMessage  string
+	FooEntity
+	BarEntity
+	ScribeEntity
 }
 
 func NewCommonEntity() *CommonEntity {

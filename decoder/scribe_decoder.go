@@ -11,8 +11,8 @@ func (this *ScribeDecoder) Decode() {
 	for {
 		scribeEntity := <-this.input
 		commonEntity := entity.NewCommonEntity()
-		commonEntity.ScribeCategory = scribeEntity.Category
-		commonEntity.ScribeMessage = scribeEntity.Message
+		commonEntity.ScribeEntity.Category = scribeEntity.Category
+		commonEntity.ScribeEntity.Message = scribeEntity.Message
 		this.output <- commonEntity
 	}
 }

@@ -4,8 +4,7 @@ type BarEntity struct {
 	Msg string
 }
 
-func NewBarEntity(msg string) *BarEntity {
+func NewBarEntity() *BarEntity {
 	entity := new(BarEntity)
-	entity.Msg = msg
 	return entity
 }

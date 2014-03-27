@@ -11,7 +11,7 @@ func (this *FooDecoder) Decode() {
 	for {
 		fooEntity := <-this.input
 		commonEntity := entity.NewCommonEntity()
-		commonEntity.FooData = fooEntity.Data
+		commonEntity.FooEntity.Data = fooEntity.Data
 		this.output <- commonEntity
 	}
 }
