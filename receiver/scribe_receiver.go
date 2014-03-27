@@ -28,7 +28,7 @@ func NewScribeReceiver(output chan entity.ScribeEntity) *ScribeReceiver {
 	rpc.RegisterName("Thrift", &scribe.ScribeServer{receiver})
 	receiver.port = 1234
 	rpc.RegisterName("Thrift", &scribe.ScribeServer{receiver})
-	receiver.listener, _ = net.Listen("tcp", string(receiver.port))
+	receiver.listener, _ = net.Listen("tcp", "127.0.0.1:1234")
 	return receiver
 }
 
