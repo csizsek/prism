@@ -1,5 +1,6 @@
 package receiver
 
+import "fmt"
 import "net"
 import "net/rpc"
 import "github.com/csizsek/prism/entity"
@@ -41,6 +42,13 @@ func (this *ScribeReceiver) Log(messages []*scribe.LogEntry) (scribe.ResultCode,
 }
 
 func (this *ScribeReceiver) parseMessage(msg *scribe.LogEntry) *entity.ScribeEntity {
-	scribeEntity := entity.NewScribeEntity("hello", "world")
+	scribeEntity := entity.NewScribeEntity()
+	if m := this.lineRegExp.MatcherString(msg.Message, 0); m != nil {
+		scribeEntity.Category = m.GroupString(3)
+		scribeEntity.Message = m.GroupString(4)
+	} else {
+		fmt.Println("no match :(")
+		fmt.Println(msg.Message)
+	}
 	return scribeEntity
 }

@@ -5,9 +5,7 @@ type ScribeEntity struct {
 	Message  string
 }
 
-func NewScribeEntity(category, message string) *ScribeEntity {
+func NewScribeEntity() *ScribeEntity {
 	entity := new(ScribeEntity)
-	entity.Category = category
-	entity.Message = message
 	return entity
 }

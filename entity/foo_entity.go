@@ -4,8 +4,7 @@ type FooEntity struct {
 	Data string
 }
 
-func NewFooEntity(data string) *FooEntity {
+func NewFooEntity() *FooEntity {
 	entity := new(FooEntity)
-	entity.Data = data
 	return entity
 }

@@ -15,7 +15,9 @@ func (this *FooReceiver) Receive() {
 
 func (this *FooReceiver) handler(rw http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(rw, "data received")
-	this.output <- *entity.NewFooEntity("hello")
+	entity := *entity.NewFooEntity()
+	entity.Data = "baz"
+	this.output <- entity
 }
 
 func NewFooReceiver(output chan entity.FooEntity) *FooReceiver {
