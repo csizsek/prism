@@ -10,7 +10,9 @@ type FooDecoder struct {
 func (this *FooDecoder) Decode() {
 	for {
 		fooEntity := <-this.input
-		this.output <- *entity.NewCommonEntity(fooEntity.Data, "")
+		commonEntity := *entity.NewCommonEntity()
+		commonEntity.FooData = fooEntity.Data
+		this.output <- commonEntity
 	}
 }
 
