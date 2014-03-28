@@ -10,18 +10,18 @@ func TestDispatch(t *testing.T) {
 
 	dispatcher := dispatcher.NewDispatcher(input, outputs)
 	go dispatcher.Dispatch()
-	
+
 	commonEntity1 := entity.NewCommonEntity()
-	commonEntity1.BarEntity.Msg = "test data"
-	input <-commonEntity1
-	
+	commonEntity1.BarEntity.Msg = "test msg"
+	input <- commonEntity1
+
 	commonEntity2 := <-outputs[0]
-	if commonEntity2.BarEntity.Msg != "test data" {
+	if commonEntity2.BarEntity.Msg != "test msg" {
 		t.Fail()
 	}
 
 	commonEntity3 := <-outputs[1]
-	if commonEntity3.BarEntity.Msg != "test data" {
+	if commonEntity3.BarEntity.Msg != "test msg" {
 		t.Fail()
 	}
 }

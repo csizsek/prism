@@ -10,13 +10,13 @@ func TestBarEncoderEncode(t *testing.T) {
 
 	barEncoder := encoder.NewBarEncoder(input, output)
 	go barEncoder.Encode()
-	
+
 	commonEntity := entity.NewCommonEntity()
-	commonEntity.BarEntity.Msg = "test data"
-	input <-commonEntity 
+	commonEntity.BarEntity.Msg = "test msg"
+	input <- commonEntity
 	barEntity := <-output
-	
-	if barEntity.Msg != "test data" {
+
+	if barEntity.Msg != "test msg" {
 		t.Fail()
 	}
 }
