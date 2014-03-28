@@ -13,7 +13,7 @@ func main() {
 	dec2disp := make(chan *entity.CommonEntity)
 	disp2map := make(chan *entity.CommonEntity)
 	map2enc := make(chan *entity.CommonEntity)
-	enc2send := make(chan *entity.BarEntity)
+	enc2send := make(chan *entity.ScribeEntity)
 
 	quit := make(chan int)
 	endpoints := []chan *entity.CommonEntity{disp2map}
@@ -22,8 +22,8 @@ func main() {
 	decoder := decoder.NewScribeDecoder(rec2dec, dec2disp)
 	dispatcher := dispatcher.NewDispatcher(dec2disp, endpoints)
 	mapper := mapper.NewMapper(disp2map, map2enc)
-	encoder := encoder.NewBarEncoder(map2enc, enc2send)
-	sender := sender.NewBarSender(enc2send)
+	encoder := encoder.NewScribeEncoder(map2enc, enc2send)
+	sender := sender.NewScribeSender(enc2send)
 
 	go receiver.Receive()
 	go decoder.Decode()
