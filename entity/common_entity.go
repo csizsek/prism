@@ -1,12 +1,11 @@
 package entity
 
 type CommonEntity struct {
-	FooEntity
-	BarEntity
+	HttpEntity
+	StdoutEntity
 	ScribeEntity
 }
 
 func NewCommonEntity() *CommonEntity {
-	entity := new(CommonEntity)
-	return entity
+	return new(CommonEntity)
 }

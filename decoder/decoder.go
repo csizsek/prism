@@ -5,7 +5,7 @@ and convert them to the CommonEntity format.
 
 All decoders should implement the Decoder interface.
 
-See FooDecoder for a very simple example.
+See HttpDecoder for a very simple example.
 */
 
 package decoder

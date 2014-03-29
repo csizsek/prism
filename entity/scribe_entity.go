@@ -6,6 +6,5 @@ type ScribeEntity struct {
 }
 
 func NewScribeEntity() *ScribeEntity {
-	entity := new(ScribeEntity)
-	return entity
+	return new(ScribeEntity)
 }
