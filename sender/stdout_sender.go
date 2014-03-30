@@ -1,17 +1,22 @@
 package sender
 
-import "fmt"
 import "github.com/csizsek/prism/entity"
+import "github.com/csizsek/prism/config"
 
 type StdoutSender struct {
-	input chan *entity.StdoutEntity
+	input  chan *entity.StdoutEntity
+	prefix string
 }
 
 func (this *StdoutSender) Send() {
 	for {
 		stdoutEntity := <-this.input
-		fmt.Println(stdoutEntity.Msg)
+		println(this.prefix, stdoutEntity.Msg)
 	}
+}
+
+func (this *StdoutSender) Configure(config config.StdoutSenderConfig) {
+	this.prefix = config.Prefix
 }
 
 func NewStdoutSender(input chan *entity.StdoutEntity) *StdoutSender {
